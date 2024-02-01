@@ -1,0 +1,103 @@
+<div
+  class="flex-shrink-0 p-3 m-0 bg-indigo h-100 text-white"
+  style="width: 200px;">
+  <div class="ps-2 pb-3 mb-3 pt-2 text-white text-decoration-none">
+    <span (click)="goHome()" class="fs-5 fw-semibold cursor-pointer">Tourism agency</span>
+  </div>
+  <hr/>
+  <ul class="list-unstyled ps-0 color-white">
+    <li
+      *ngIf="!isAdmin"
+      class="mb-1">
+      <button
+
+        class="btn btn-toggle color-white hover-opacity d-inline-flex align-items-center rounded border-0 collapsed fw-bold"
+        data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+        Vacations
+      </button>
+      <div class="collapse ps-4" id="home-collapse">
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          <li><a
+            (click)="goTo('VACATIONS')"
+            class="cursor-pointer py-2 color-white hover-opacity d-inline-flex text-decoration-none rounded">View
+            vacations</a></li>
+          <li><a
+            (click)="goTo('ADD_VACATION')"
+            class="cursor-pointer py-2 color-white hover-opacity d-inline-flex text-decoration-none rounded">Add
+            vacation</a></li>
+        </ul>
+      </div>
+    </li>
+    <li
+      *ngIf="!isAdmin"
+      class="mb-1">
+      <button
+        class="btn btn-toggle color-white hover-opacity d-inline-flex align-items-center rounded border-0 collapsed fw-bold"
+        data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+        Clients
+      </button>
+      <div class="collapse ps-4" id="dashboard-collapse">
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          <li><a
+            (click)="goTo('CLIENTS')"
+            class="cursor-pointer py-2 color-white hover-opacity d-inline-flex text-decoration-none rounded">View
+            clients</a></li>
+          <li><a
+            (click)="goTo('ADD_CLIENT')"
+            class="cursor-pointer py-2 color-white hover-opacity d-inline-flex text-decoration-none rounded">Add
+            client</a></li>
+        </ul>
+      </div>
+    </li>
+    <li
+      *ngIf="!isAdmin"
+      class="mb-1">
+      <button
+        class="btn btn-toggle color-white hover-opacity d-inline-flex align-items-center rounded border-0 collapsed fw-bold"
+        data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+        Reservation
+      </button>
+      <div class="collapse ps-4" id="orders-collapse">
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          <li><a
+            (click)="goTo('RESERVATIONS')"
+            class="cursor-pointer py-2 color-white hover-opacity d-inline-flex text-decoration-none rounded">View
+            reservations</a></li>
+          <li><a
+            (click)="goTo('ADD_RESERVATION')"
+            class="cursor-pointer py-2 color-white hover-opacity d-inline-flex text-decoration-none rounded">Add
+            reservations</a></li>
+        </ul>
+      </div>
+    </li>
+    <li
+      *ngIf="isAdmin"
+      class="mb-1">
+      <button
+        class="btn btn-toggle color-white hover-opacity d-inline-flex align-items-center rounded border-0 collapsed fw-bold"
+        data-bs-toggle="collapse" data-bs-target="#clients-collapse" aria-expanded="false">
+        Employees
+      </button>
+      <div class="collapse ps-4" id="clients-collapse">
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          <li><a
+            (click)="goTo('EMPLOYEES')"
+            class="cursor-pointer py-2 color-white hover-opacity d-inline-flex text-decoration-none rounded">
+            View employees</a></li>
+          <li><a
+            (click)="goTo('ADD_EMPLOYEE')"
+            class="cursor-pointer py-2 color-white hover-opacity d-inline-flex text-decoration-none rounded">
+            Add employee</a></li>
+        </ul>
+      </div>
+    </li>
+    <hr/>
+    <li class="mb-1">
+      <button (click)="onLogout()"
+              class="btn btn-toggle color-white hover-opacity d-inline-flex align-items-center rounded border-0 collapsed"
+              data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+        Log out
+      </button>
+    </li>
+  </ul>
+</div>

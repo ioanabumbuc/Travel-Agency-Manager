@@ -1,0 +1,22 @@
+.bg-image{
+  background-repeat: round;
+  opacity: 0.8;
+}
+.bg-image:hover{
+  opacity: 0.9;
+  transition-duration: 0.3s;
+}
+
+.bg-image-hotel {
+  background-image: url("../../../assets/hotel2.jpg");
+  background-repeat: round;
+  opacity: 0.8;
+}
+
+.bg-image-cruise {
+  background-image: url("../../../assets/cruise.jpg");
+}
+
+.bg-image-tour {
+  background-image: url("../../../assets/tour3.jpg");
+}

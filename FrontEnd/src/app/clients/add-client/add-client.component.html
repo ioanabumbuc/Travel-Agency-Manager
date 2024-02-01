@@ -1,0 +1,71 @@
+<div class="container-fluid d-flex m-0 p-0 vh-100">
+  <app-menu></app-menu>
+  <div class="h-auto w-100 m-4">
+    <div (click)="back()"  class="cursor-pointer">
+      <i class="bi bi-arrow-return-left"></i>
+      <a class="cursor-pointer link-dark">
+        Back to clients</a>
+    </div>
+    <h5 class="my-5 text-center">Add new client</h5>
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div *ngIf="showForm; else addedSuccessfully" class="col-md-6">
+        <form [formGroup]="clientForm">
+          <div *ngIf="error" class="text-red mb-4">
+            {{error}}
+          </div>
+          <label class="mb-2">Full name</label>
+          <input
+            type="text"
+            class="form-control mb-2"
+            formControlName="fullName">
+          <div
+            *ngIf="clientForm.controls['fullName'].touched && clientForm.controls['fullName'].value == ''"
+            class="text-red mb-3">Required field
+          </div>
+
+          <label class="mb-2">Email</label>
+          <input
+            type="text"
+            class="form-control mb-2"
+            formControlName="email">
+          <div
+            *ngIf="clientForm.controls['email'].dirty && clientForm.controls['email'].errors"
+            class="text-red mb-2">Invalid email
+          </div>
+          <div
+            *ngIf="clientForm.controls['email'].touched && clientForm.controls['email'].value == ''"
+            class="text-red mb-3">Required field
+          </div>
+
+          <label class="mb-2">Phone number</label>
+          <input
+            type="text"
+            class="form-control mb-2"
+            formControlName="phoneNb">
+          <div
+            *ngIf="clientForm.controls['phoneNb'].dirty && clientForm.controls['phoneNb'].errors"
+            class="text-red mb-2">Invalid value
+          </div>
+          <div
+            *ngIf="clientForm.controls['phoneNb'].touched && clientForm.controls['phoneNb'].value == ''"
+            class="text-red mb-3">Required field
+          </div>
+          <div class="d-flex justify-content-center mt-4">
+            <button
+              (click)="saveClient()"
+              class="btn btn-primary px-5 rounded-5">Save
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <ng-template #addedSuccessfully>
+      <div class="col-md-6">
+        <h6>Client added successfully.
+          <a (click)="showForm = true" class="ps-2 cursor-pointer link-primary">Add another</a>
+        </h6>
+      </div>
+    </ng-template>
+  </div>
+</div>

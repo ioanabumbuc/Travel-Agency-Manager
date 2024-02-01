@@ -1,0 +1,71 @@
+<div class="container-fluid d-flex m-0 p-0 vh-100">
+  <app-menu></app-menu>
+  <div class="h-auto w-100 m-4">
+    <h5 class="mb-4">View Reservations</h5>
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Client</th>
+        <th scope="col">Destination</th>
+        <th scope="col">Number of people</th>
+        <th scope="col">Payment status</th>
+        <th scope="col" colspan="2">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr
+        *ngFor="let reservation of reservations">
+        <th>{{reservation.id}}</th>
+        <td>{{reservation.client.fullName}}</td>
+        <td>{{reservation.vacation.destination}}</td>
+        <td>{{reservation.numberOfPeople}}</td>
+        <td>{{reservation.paymentStatus}}</td>
+        <td>
+          <button *ngIf="reservation.paymentStatus === 'PENDING'" (click)="setPayId(reservation.id)" class="btn p-0"
+                  data-bs-toggle="modal" data-bs-target="#payModal">
+            <i class="bi bi-credit-card-2-back"></i></button>
+        </td>
+        <td>
+          <button (click)="setDeleteId(reservation.id)" class="btn p-0" data-bs-toggle="modal"
+                  data-bs-target="#areYouSureModal">
+            <i class="bi bi-trash cursor-pointer"></i>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="modal fade" id="areYouSureModal" tabindex="-1" aria-labelledby="areYouSureLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to cancel this reservation?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button (click)="deleteReservation()" type="button" class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="payModal" tabindex="-1" aria-labelledby="payLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Pay the reservation?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button (click)="pay()" type="button" class="btn btn-success " data-bs-dismiss="modal">Pay</button>
+      </div>
+    </div>
+  </div>
+</div>

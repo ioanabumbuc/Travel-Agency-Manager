@@ -1,0 +1,52 @@
+<div class="container-fluid d-flex m-0 p-0 vh-100">
+  <app-menu></app-menu>
+  <div class="h-auto w-100 m-4">
+    <h5 class="mb-4">View all clients</h5>
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Full name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone number</th>
+        <th colspan="2">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let client of clients">
+        <th scope="row">{{client.id}}</th>
+        <td>{{client.fullName}}</td>
+        <td>{{client.email}}</td>
+        <td>{{client.phoneNumber}}</td>
+        <td>
+          <button (click)="goToEdit(client.id)" class="btn p-0">
+            <i class="bi bi-pencil cursor-pointer"></i></button>
+        </td>
+        <td>
+          <button (click)="setDeleteId(client.id)" class="btn p-0" data-bs-toggle="modal"
+                  data-bs-target="#areYouSureModal">
+            <i class="bi bi-trash cursor-pointer"></i>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="modal fade" id="areYouSureModal" tabindex="-1" aria-labelledby="areYouSureLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete the client?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button (click)="deleteClient()" type="button" class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+

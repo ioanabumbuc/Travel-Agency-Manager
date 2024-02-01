@@ -1,0 +1,5 @@
+Reservation created at 2023-04-25T21:15:37.809607100
+Reservation null
+Destination null
+Client Name: null, email: test@test.com, phone number: null
+Payment Status PENDING

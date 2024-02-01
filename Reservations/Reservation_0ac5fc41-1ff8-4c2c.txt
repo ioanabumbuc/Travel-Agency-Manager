@@ -1,0 +1,5 @@
+Reservation created at 2023-04-22T18:32:39.875985800
+Reservation null
+Destination Japan
+Client Name: John Smith, email: john@example.com, phone number: 555-1234
+Payment Status PENDING

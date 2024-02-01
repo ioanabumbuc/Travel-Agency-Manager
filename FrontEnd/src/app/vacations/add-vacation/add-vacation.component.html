@@ -1,0 +1,183 @@
+<div class="container-fluid d-flex m-0 p-0 vh-100">
+  <app-menu></app-menu>
+  <div class="h-auto w-100 m-4">
+    <div (click)="back()"  class="cursor-pointer">
+      <i class="bi bi-arrow-return-left"></i>
+      <a class="cursor-pointer link-dark">
+        Back to vacations</a>
+    </div>
+    <h5 class="my-5 text-center">Add a vacation</h5>
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <form [formGroup]="vacationForm">
+          <div *ngIf="error" class="text-red mb-4">
+            {{error}}
+          </div>
+          <div *ngIf="success" class="text-success mb-4">
+            Vacation added successfully
+          </div>
+
+          <div class="d-flex mb-2">
+            <div class="form-check pe-3">
+              <input (change)="setType('STAY')" class="form-check-input" type="radio" name="flexRadioDefault" checked>
+              <label class="form-check-label">
+                Stay
+              </label>
+            </div>
+            <div class="form-check pe-3">
+              <input (change)="setType('TOUR')" class="form-check-input" type="radio" name="flexRadioDefault">
+              <label class="form-check-label">
+                Tour
+              </label>
+            </div>
+            <div class="form-check pe-3">
+              <input (change)="setType('CRUISE')" class="form-check-input" type="radio" name="flexRadioDefault">
+              <label class="form-check-label">
+                Cruise
+              </label>
+            </div>
+          </div>
+
+
+          <label class="mb-2">Destination</label>
+          <input
+            type="text"
+            class="form-control mb-2"
+            formControlName="destination">
+          <div
+            *ngIf="vacationForm.controls['destination'].touched && vacationForm.controls['destination'].value == ''"
+            class="text-red mb-3">Required field
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <label class="mb-2">Start Date</label>
+              <input
+                type="text"
+                class="form-control mb-2"
+                formControlName="startDate">
+              <div
+                *ngIf="vacationForm.controls['startDate'].dirty && vacationForm.controls['startDate'].errors"
+                class="text-red mb-2">Invalid date
+              </div>
+              <div
+                *ngIf="vacationForm.controls['startDate'].touched && vacationForm.controls['startDate'].value == ''"
+                class="text-red mb-3">Required field
+              </div>
+            </div>
+            <div class="col">
+              <label class="mb-2">End Date</label>
+              <input
+                type="text"
+                class="form-control mb-2"
+                formControlName="endDate">
+              <div
+                *ngIf="vacationForm.controls['endDate'].dirty && vacationForm.controls['endDate'].errors"
+                class="text-red mb-2">Invalid date
+              </div>
+              <div
+                *ngIf="vacationForm.controls['endDate'].touched && vacationForm.controls['endDate'].value == ''"
+                class="text-red mb-3">Required field
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label class="mb-2">Price</label>
+              <input
+                type="text"
+                class="form-control mb-2"
+                formControlName="price">
+              <div
+                *ngIf="vacationForm.controls['price'].touched && vacationForm.controls['price'].value == ''"
+                class="text-red mb-3">Required field
+              </div>
+            </div>
+            <div class="col">
+              <label class="mb-2">Availability</label>
+              <input
+                type="text"
+                class="form-control mb-2"
+                formControlName="availability">
+              <div
+                *ngIf="vacationForm.controls['availability'].touched && vacationForm.controls['availability'].value == ''"
+                class="text-red mb-3">Required field
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="type === 'STAY'">
+            <label class="mb-2">Hotel name</label>
+            <input
+              type="text"
+              class="form-control mb-2"
+              formControlName="hotelName">
+            <div
+              *ngIf="vacationForm.controls['hotelName'].touched && vacationForm.controls['hotelName'].value == ''"
+              class="text-red mb-3">Required field
+            </div>
+          </div>
+
+          <div *ngIf="type === 'TOUR'" class="row">
+            <div class="col">
+              <label class="mb-2">Itinerary</label>
+              <input
+                type="text"
+                class="form-control mb-2"
+                formControlName="itinerary">
+              <div
+                *ngIf="vacationForm.controls['itinerary'].touched && vacationForm.controls['itinerary'].value == ''"
+                class="text-red mb-3">Required field
+              </div>
+            </div>
+            <div class="col">
+              <label class="mb-2">Guide</label>
+              <input
+                type="text"
+                class="form-control mb-2"
+                formControlName="guide">
+              <div
+                *ngIf="vacationForm.controls['guide'].touched && vacationForm.controls['guide'].value == ''"
+                class="text-red mb-3">Required field
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="type === 'CRUISE'" class="row">
+            <div class="col">
+              <label class="mb-2">Ship name</label>
+              <input
+                type="text"
+                class="form-control mb-2"
+                formControlName="shipName">
+              <div
+                *ngIf="vacationForm.controls['shipName'].touched && vacationForm.controls['shipName'].value == ''"
+                class="text-red mb-3">Required field
+              </div>
+            </div>
+            <div class="col">
+              <label class="mb-2">Boarding location</label>
+              <input
+                type="text"
+                class="form-control mb-2"
+                formControlName="boardingLocation">
+              <div
+                *ngIf="vacationForm.controls['boardingLocation'].touched && vacationForm.controls['boardingLocation'].value == ''"
+                class="text-red mb-3">Required field
+              </div>
+            </div><div class="d-flex justify-content-center mt-4">
+            <button
+              (click)="saveVacation()"
+              [disabled]="vacationForm.invalid"
+              class="btn btn-primary px-5 rounded-5">Save
+            </button>
+          </div>
+          </div>
+
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

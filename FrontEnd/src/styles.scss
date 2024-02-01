@@ -1,0 +1,56 @@
+//@import "~bootstrap/dist/css/bootstrap.css";
+/* You can add global styles to this file, and also import other style files */
+.body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+:root {
+  --green: #d1ffbd;
+  --turquoise: #ADFFF0;;
+  --blue: #70e4ef;
+  --orange: #f18f01;
+  --gray: #585563;
+  --red: #d64550;
+  --pink: #eccbd9;
+  --indigo: #043B62;
+}
+
+.bg-turquoise {
+  background-color: var(--turquoise);
+}
+
+.bg-indigo {
+  background-color: var(--indigo);
+}
+
+.bg-pink {
+  background-color: var(--pink);
+}
+
+.text-red {
+  color: var(--red);
+}
+
+.button {
+  background-color: #65d136;
+  color: white;
+}
+
+.button:hover {
+  background-color: rgba(101, 209, 54, 0.5);
+}
+
+.color-white {
+  color: white !important;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.form-check-input{
+  margin-top: 5px;
+}

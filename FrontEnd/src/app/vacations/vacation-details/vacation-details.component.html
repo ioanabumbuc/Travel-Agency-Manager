@@ -1,0 +1,52 @@
+<div class="container-fluid d-flex m-0 p-0 vh-100">
+  <app-menu></app-menu>
+  <div class="h-auto w-100 m-4">
+    <div (click)="back()" class="cursor-pointer">
+      <i class="bi bi-arrow-return-left"></i>
+      <a class="cursor-pointer link-dark">
+        Back to vacations</a>
+    </div>
+    <h5 class="my-5 fw-semibold">Vacation details</h5>
+    <div class="row">
+      <div class="col-3">
+        <p class="fw-light text-dark">Destination</p>
+        <p class="fw-light text-dark">Period</p>
+        <p class="fw-light text-dark">Price</p>
+        <p *ngIf="type === 'STAY'" class="fw-light text-dark">Hotel name</p>
+        <p *ngIf="type === 'STAY'" class="fw-light text-dark">Attractions</p>
+        <p *ngIf="type === 'CRUISE'" class="fw-light text-dark">Ship name</p>
+        <p *ngIf="type === 'CRUISE'" class="fw-light text-dark">Boarding location</p>
+        <p *ngIf="type === 'TOUR'" class="fw-light text-dark">Guide</p>
+        <p *ngIf="type === 'TOUR'" class="fw-light text-dark">Itinerary</p>
+      </div>
+      <div class="col-7">
+        <p class="ps-3 fw-semibold text-black">{{vacation.destination}}</p>
+        <p class="ps-3 fw-semibold text-black d-flex">{{vacation.startDate}}<i
+          class="bi bi-arrow-right px-3"></i>{{vacation.endDate}}
+        </p>
+        <p class="ps-3 fw-semibold text-black">{{vacation.price}} €</p>
+        <p *ngIf="type === 'STAY'" class="ps-3 fw-semibold text-black">{{vacation.hotelName}}</p>
+        <div *ngIf="type === 'STAY'" class="text-black">
+          <ul>
+            <li *ngFor="let attraction of vacation.attractions">
+              {{attraction.name}}
+              <span *ngIf="attraction.schedule" class="px-2 fw-light">
+                 {{attraction.schedule}}
+              </span>
+              <span *ngIf="attraction.needsTicket" class="fw-light">
+                 {{attraction.ticketPrice}} €
+              </span>
+            </li>
+          </ul>
+        </div>
+        <p *ngIf="type === 'CRUISE'" class="ps-3 fw-semibold text-black">{{vacation.shipName}}</p>
+        <p *ngIf="type === 'CRUISE'" class="ps-3 fw-semibold text-black">{{vacation.boardingLocation}}</p>
+        <p *ngIf="type === 'TOUR'" class="ps-3 fw-semibold text-black">{{vacation.guide}}</p>
+        <p *ngIf="type === 'TOUR'" class="ps-3 fw-semibold text-black">{{vacation.itinerary}}</p>
+      </div>
+    </div>
+  </div>
+  <div
+    [ngClass]="{'bg-image-hotel':type==='STAY','bg-image-cruise':type==='CRUISE','bg-image-tour':type==='TOUR'}"
+    class="w-50 bg-image"></div>
+</div>

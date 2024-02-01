@@ -1,0 +1,57 @@
+<div class="w-100 bg-pink vh-100">
+  <div class="white-space"></div>
+  <div class="p-4 w-50 mx-auto bg-white rounded-4">
+    <h3>Log in!</h3>
+    <div
+      *ngIf="!validLogin"
+      class="text-red mt-3">Incorrect email or password.</div>
+    <!-- Email input -->
+    <div
+      [ngClass]="validLogin ? 'mt-4' : 'mt-3'"
+      class="form-outline mb-2">
+      <input
+        [(ngModel)]="user.email"
+        #email="ngModel"
+        name="email"
+        placeholder="Email address*"
+        type="email" id="form2Example1" class="form-control"/>
+      <div *ngIf="email.touched && user.email===''"
+           class="text-red mt-2 ms-1">
+        Email is required
+      </div>
+    </div>
+
+    <!-- Password input -->
+    <div class="form-outline mb-4 mt-4">
+      <input
+        [(ngModel)]="user.password"
+        #password="ngModel"
+        placeholder="Password*"
+        type="password"
+        id="form2Example2"
+        class="form-control"/>
+      <div *ngIf="password.touched && user.password===''"
+           class="text-red mt-2 ms-1">
+        Password is required
+      </div>
+    </div>
+
+    <!-- 2 column grid layout for inline styling -->
+
+    <!-- Checkbox -->
+    <div class="form-check mb-4">
+      <input [(ngModel)]="isAdmin" class="form-check-input" type="checkbox" value="" id="form2Example31"/>
+      <label class="form-check-label" for="form2Example31"> Login as admin </label>
+    </div>
+
+    <!-- Submit button -->
+    <div class="align-items-center text-center">
+      <button
+        (click)="login()"
+        type="button" class="btn btn-primary mb-4 px-4">Sign in
+      </button>
+    </div>
+
+
+  </div>
+</div>
